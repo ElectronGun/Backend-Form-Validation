@@ -1,0 +1,29 @@
+Validate Date of Birth (DOB)
+
+// Sanitize and Validate date of birth
+// DOB must not be in future, otherwise error
+// Error - place in array
+$dob = new DateTime(filter_input(INPUT_POST, 'dob', FILTER_SANITIZE_STRING));
+$now = new DateTime();
+if ($dob > $now) {
+    $errors[] = "The date year must be before the current year 2024.";
+}
+
+Notes
+
+$dob = new DateTime(filter_input(INPUT_POST, 'dob', FILTER_SANITIZE_STRING));
+
+***Retrieves the dob from a POST request. The filter_input() function is a built-in PHP function that gets a specific external variable by name and optionally filters it.
+'dob' is the variable we want from the POST data. FILTER_SANITIZE_STRING is a filter that removes tags and remove or encode special characters from a string to prevent sql attacks.
+
+$now = new DateTime();
+
+***Creates a new DateTime object with the current date and time and assigns it to the variable $now.
+
+if ($dob > $now) {
+
+***Checks if the date of birth is later than the current date. If it is, an error is sent to array.
+
+$errors[] = "The date year must be before the current year 2024.";
+
+***If the dob is later than $now, a new error message “The date year must be before the current year 2024.” is ADDED to the $errors array for later output.

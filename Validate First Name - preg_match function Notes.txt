@@ -1,0 +1,27 @@
+Validate Last Name
+
+// Sanitize and Validate first name 
+// PHP function to check $first_name does not match pattern > 2 letters
+// Error - place in array
+$first_name = filter_input(INPUT_POST, 'first_name', FILTER_SANITIZE_STRING);
+if (!preg_match("/^[a-zA-Z]{2,20}$/", $first_name)) {
+    $errors[] = "First name must be between 2-20 characters in length.";
+}
+
+Notes
+
+$first_name = filter_input(INPUT_POST, 'first_name', FILTER_SANITIZE_STRING);
+
+***Retrieves the first_name from a POST request. The filter_input() function is a built-in PHP function that gets a specific external variable by name and optionally filters it.
+'first_name' is the variable we want from the POST data. FILTER_SANITIZE_STRING is a filter that removes tags and remove or encode special characters from a string to prevent sql attacks.
+
+
+if (!preg_match("/^[a-zA-Z]{2,20}$/", $first_name)) {
+
+***Checks if the first_name matches a specific pattern. The preg_match() function is a PHP function that performs a regular expression match. The expression "/^[a-zA-Z]{2,20}$/" checks for a string that exactly matches the pattern of uppercase OR lowercase letters, be 2-20 characters in length, no numbers, spaces, or special characters.
+
+
+
+$errors[] = "First name must be between 2-20 characters in length.";
+
+***If the health_card_number does not match the pattern, a new error message “First name must be between 2-20 characters in length.” is ADDED to the $errors array for later output.

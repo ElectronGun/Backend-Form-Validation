@@ -1,0 +1,32 @@
+Validation Errors In Array - Output
+
+// Check for validation errors, display error or success message
+// Array of error(s), display as unordered list
+if (empty($errors)) {
+    $message = "<p>Patient Data Entered Correctly</p>";
+} else {
+    $message = "<ul>";
+    foreach ($errors as $error) {
+        $message .= "<li>$error</li>";
+    }
+    $message .= "</ul>";
+}
+
+
+Notes
+
+if (empty($errors)) {
+    $message = "<p>Patient Data Entered Correctly</p>";
+
+***Checks if errors array is empty of errors. Set $message variable to string for output message
+
+} else {
+    $message = "<ul>";
+    foreach ($errors as $error) {
+        $message .= "<li>$error</li>";
+    }
+    $message .= "</ul>";
+}
+
+***Errors are displayed as unordered list. Foreach loop, which will iterate over each element in the $errors array. Each element is temporarily assigned to the $error variable. $message .= "<li>$error</li>"; adds a list item to the $message for each error. The . operator is used to concatenate strings together. The list of errors is output as a message
+

@@ -1,0 +1,28 @@
+Validate Health Card - PHP
+
+// Sanitize and Validate health card number
+    // PHP function to check $health_card_number does not match pattern XXXX-XXX-XXX AA
+    // Error - place in array
+    $health_card_number = filter_input(INPUT_POST, 'health_card_number', FILTER_SANITIZE_STRING);
+    if (!preg_match("/^\d{4}-\d{3}-\d{3} [A-Z]{2}$/", $health_card_number)) {
+        $errors[] = "Health Care Number format invalid.";
+    }
+
+
+Notes
+
+$health_card_number = filter_input(INPUT_POST, 'health_card_number', FILTER_SANITIZE_STRING);
+
+***Retrieves the health_card_number from a POST request. The filter_input() function is a built-in PHP function that gets a specific external variable by name and optionally filters it.
+'health_card_number' is the variable we want from the POST data. FILTER_SANITIZE_STRING is a filter that removes tags and remove or encode special characters from a string to prevent sql attacks.
+
+
+if (!preg_match("/^\d{4}-\d{3}-\d{3} [A-Z]{2}$/", $health_card_number)) { 
+
+***Checks if the health_card_number matches a specific pattern. The preg_match() function is a PHP function that performs a regular expression match. The expression "/^\d{4}-\d{3}-\d{3} [A-Z]{2}$/" checks for a string that exactly matches the pattern of four digits, followed by a hyphen, three digits, another hyphen, three more digits, a space, and finally two uppercase letters.
+
+
+
+$errors[] = "Health Care Number format invalid."; 
+
+***If the health_card_number does not match the pattern, a new error message “Health Care Number format invalid.” is ADDED to the $errors array for later output.
